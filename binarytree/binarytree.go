@@ -90,19 +90,23 @@ func (tree *BinaryTree) DeleteNode(nodeVal int) bool {
 			if reflect.DeepEqual(tempNode.Left, deepestNode) {
 				tempNode.Left = nil
 				return true
-			} else {
-				q = append(q, tempNode.Left)
 			}
+			q = append(q, tempNode.Left)
 		}
 		if tempNode.Right != nil {
 			if reflect.DeepEqual(tempNode.Right, deepestNode) {
 				tempNode.Right = nil
 				return true
-			} else {
-				q = append(q, tempNode.Right)
 			}
+			q = append(q, tempNode.Right)
 		}
 	}
+	return false
+}
+
+//IsContinuous checks whether the tree is continuous or not. The definition for the continuous tree is derived from here. https://www.geeksforgeeks.org/continuous-tree/
+func (tree *BinaryTree) IsContinuous() bool {
+
 	return false
 }
 
