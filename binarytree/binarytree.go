@@ -157,9 +157,8 @@ func (tree *ArrayBT) SetLeft(key string, position int) bool {
 	t := position*2 + 1
 	if tree.Elemets[position] == "" {
 		return false
-	} else {
-		tree.Elemets[t] = key
 	}
+	tree.Elemets[t] = key
 	return true
 }
 
@@ -168,9 +167,7 @@ func (tree *ArrayBT) SetRight(key string, position int) bool {
 	t := position*2 + 1
 	if tree.Elemets[position] == "" {
 		return false
-	} else {
-		tree.Elemets[t] = key
 	}
+	tree.Elemets[t] = key
 	return true
-
 }
