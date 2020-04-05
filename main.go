@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	bt "github.com/prashant182/dsa/binarytree"
 )
 
@@ -40,6 +42,26 @@ func main() {
 	*/
 	bt1.DeleteNode(3)
 	bt1.Print()
+
+	/*
+		Let's check if the above tree is continuous or not
+					Node(4)
+					/    \
+			 Node(5)      Node(3)
+			 /
+		 Node(6)
+
+	*/
+	node4 := bt.NewNode(4)
+	node5 := bt.NewNode(5)
+	node3 = bt.NewNode(3)
+	node6 := bt.NewNode(6)
+	node4.Left = node5
+	node5.Left = node6
+	node4.Right = node3
+	ct1 := bt.NewBinaryTree(node4)
+	fmt.Println("IsContinuous :", ct1.IsContinuous())
+
 	/*
 		Array Based binary tree example
 	*/
@@ -48,4 +70,5 @@ func main() {
 	at.SetLeft("C", 0)
 	at.SetRight("D", 0)
 	at.Print()
+
 }

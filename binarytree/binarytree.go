@@ -106,8 +106,35 @@ func (tree *BinaryTree) DeleteNode(nodeVal int) bool {
 
 //IsContinuous checks whether the tree is continuous or not. The definition for the continuous tree is derived from here. https://www.geeksforgeeks.org/continuous-tree/
 func (tree *BinaryTree) IsContinuous() bool {
+	root := tree.Root
+	return isContinuous(root)
+}
 
-	return false
+func isContinuous(node *Node) bool {
+	if node == nil {
+		return true
+	}
+
+	if node.Left == nil && node.Right == nil {
+		return true
+	}
+
+	if node.Right == nil {
+		// fmt.Println(node.Data, " - ", node.Left.Data, " = ", Abs(node.Data-node.Left.Data))
+		return Abs(node.Data-node.Left.Data) == 1 && isContinuous(node.Left)
+	}
+
+	if node.Left == nil {
+		// fmt.Println(node.Data, " - ", node.Right.Data, " = ", Abs(node.Data-node.Left.Data))
+		return Abs(node.Data-node.Right.Data) == 1 && isContinuous(node.Right)
+	}
+
+	// fmt.Println(node.Data, " - ", node.Right.Data, " = ", Abs(node.Data-node.Left.Data))
+	// fmt.Println(node.Data, " - ", node.Left.Data, " = ", Abs(node.Data-node.Left.Data))
+	return Abs(node.Data-node.Right.Data) == 1 &&
+		Abs(node.Data-node.Left.Data) == 1 &&
+		isContinuous(node.Left) &&
+		isContinuous(node.Right)
 }
 
 //Print method prints the binary tree in a level order traversal
@@ -133,4 +160,12 @@ func (tree *BinaryTree) Print() {
 		}
 	}
 	fmt.Println()
+}
+
+// Abs returns the absolute value of x.
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }
