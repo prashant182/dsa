@@ -61,6 +61,15 @@ func main() {
 	node4.Right = node3
 	ct1 := bt.NewBinaryTree(node4)
 	fmt.Println("IsContinuous :", ct1.IsContinuous())
+	/*
+		Let's check how different traversal algorithms works for above tree
+		InOrder := 6,5,4,3
+		PreOrder := 4,5,6,3
+		PostOrder := 6,5,3,4
+	*/
+	ct1.InOrder()
+	ct1.PreOrder()
+	ct1.PostOrder()
 
 	/*
 		Array Based binary tree example

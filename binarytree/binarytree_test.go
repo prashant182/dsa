@@ -1,6 +1,8 @@
 package binarytree
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestBinaryTree_IsSymmetric(t *testing.T) {
 
@@ -68,6 +70,46 @@ func TestBinaryTree_IsSymmetric(t *testing.T) {
 			if got := tt.tree.IsSymmetric(); got != tt.want {
 				t.Errorf("BinaryTree.IsSymmetric() = %v, want %v", got, tt.want)
 			}
+		})
+	}
+}
+
+func TestBinaryTree_PreOrder(t *testing.T) {
+
+	/*
+		TestCase 1 :=
+								1
+						      /   \
+							 2     3
+							/ \   / \
+						   4   5 6   7
+	*/
+	ns1 := NewNode(1)
+	ns2 := NewNode(2)
+	ns3 := NewNode(3)
+	ns4 := NewNode(4)
+	ns5 := NewNode(5)
+	ns6 := NewNode(6)
+	ns7 := NewNode(7)
+	ns1.Left = ns2
+	ns1.Right = ns3
+	ns2.Left = ns4
+	ns2.Right = ns5
+	ns3.Left = ns6
+	ns3.Right = ns7
+	t1 := NewBinaryTree(ns1)
+	tests := []struct {
+		name string
+		tree *BinaryTree
+	}{
+		{
+			name: "PreOrder",
+			tree: t1,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tt.tree.PreOrder()
 		})
 	}
 }

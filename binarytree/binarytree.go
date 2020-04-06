@@ -160,6 +160,56 @@ func isSymmetric(lnode *Node, rnode *Node) bool {
 	return false
 }
 
+//InOrder returns the InOrder traversal path for a given binary tree
+func (tree *BinaryTree) InOrder() {
+	root := tree.Root
+	inOrder(root)
+	fmt.Println()
+}
+
+func inOrder(node *Node) {
+	if (node) == nil {
+		return
+	}
+	inOrder(node.Left)
+	fmt.Print(node.Data, " ")
+	inOrder(node.Right)
+}
+
+//PreOrder returns the PnOrder traversal path for a given binary tree
+func (tree *BinaryTree) PreOrder() {
+	root := tree.Root
+	preOrder(root)
+	fmt.Println()
+}
+
+func preOrder(node *Node) {
+	if node == nil {
+		return
+	}
+
+	fmt.Print(node.Data, " ")
+	preOrder(node.Left)
+	preOrder(node.Right)
+}
+
+//PostOrder returns the PostOrder traversal path for a given binary tree
+func (tree *BinaryTree) PostOrder() {
+	root := tree.Root
+	postOrder(root)
+	fmt.Println()
+}
+
+func postOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	postOrder(node.Left)
+	postOrder(node.Right)
+	fmt.Print(node.Data, " ")
+
+}
+
 //Print method prints the binary tree in a level order traversal
 func (tree *BinaryTree) Print() {
 	root := tree.Root
