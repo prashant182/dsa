@@ -137,6 +137,12 @@ func isContinuous(node *Node) bool {
 		isContinuous(node.Right)
 }
 
+//IsFoldable is the method which returns wether a tree is foldable or not. Definition https://www.geeksforgeeks.org/foldable-binary-trees/
+func (tree *BinaryTree) IsFoldable() bool {
+
+	return false
+}
+
 //Print method prints the binary tree in a level order traversal
 func (tree *BinaryTree) Print() {
 	root := tree.Root
