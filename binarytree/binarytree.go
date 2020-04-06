@@ -137,9 +137,26 @@ func isContinuous(node *Node) bool {
 		isContinuous(node.Right)
 }
 
-//IsFoldable is the method which returns wether a tree is foldable or not. Definition https://www.geeksforgeeks.org/foldable-binary-trees/
+//IsFoldable is the method which returns whether a tree is foldable or not. Definition https://www.geeksforgeeks.org/foldable-binary-trees/
 func (tree *BinaryTree) IsFoldable() bool {
 
+	return false
+}
+
+//IsSymmetric is the method which returns whether the given tree is a symmetric tree or not. Definition for the symmetic tree is defined from here. https://www.geeksforgeeks.org/symmetric-tree-tree-which-is-mirror-image-of-itself/
+func (tree *BinaryTree) IsSymmetric() bool {
+	root := tree.Root
+	return isSymmetric(root, root)
+}
+
+func isSymmetric(lnode *Node, rnode *Node) bool {
+	if lnode == nil && rnode == nil {
+		return true
+	}
+
+	if lnode != nil && rnode != nil && lnode.Data == rnode.Data {
+		return isSymmetric(lnode.Left, rnode.Right) && isSymmetric(lnode.Right, rnode.Left)
+	}
 	return false
 }
 
